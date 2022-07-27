@@ -1,0 +1,25 @@
+{
+  "name": "team-profile-gen",
+  "version": "1.0.0",
+  "description": "app uses command-line to prompt users for information which is then used to generate team profiles",
+  "main": "script.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oguerra9/team-profile-gen.git"
+  },
+  "author": "Olivia Guerra",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/oguerra9/team-profile-gen/issues"
+  },
+  "homepage": "https://github.com/oguerra9/team-profile-gen#readme",
+  "dependencies": {
+    "inquirer": "^6.5.2"
+  }
+}
