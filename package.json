@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/oguerra9/team-profile-gen#readme",
   "dependencies": {
+    "fs": "^0.0.1-security",
     "inquirer": "^6.5.2"
   }
 }
