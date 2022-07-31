@@ -1,7 +1,7 @@
-const Employee = require("lib\employee.js");
-const Manager = require("lib\manager.js");
-const Engineer = require("lib\engineer.js");
-const Intern = require("lib\intern.js");
+const Employee = require("../lib/employee.js");
+const Manager = require("../lib/manager.js");
+const Engineer = require("../lib/engineer.js");
+const Intern = require("../lib/intern.js");
 
 describe ("Employee Class", () => {
     describe("getName method", () => {
@@ -11,7 +11,7 @@ describe ("Employee Class", () => {
 
             const empName = employee.getName();
 
-            expect(empName.toEqual(name));
+            expect(empName).toEqual(name);
         });
     });
     describe("getId method", () => {
@@ -21,7 +21,7 @@ describe ("Employee Class", () => {
 
             const empId = employee.getId();
 
-            expect(empId.toEqual(id));
+            expect(empId).toEqual(id);
         });
     });
     describe("getEmail method", () => {
@@ -31,7 +31,7 @@ describe ("Employee Class", () => {
 
             const empEmail = employee.getEmail();
 
-            expect(empEmail.toEqual(email));
+            expect(empEmail).toEqual(email);
         });
     });
     describe("getRole method", () => {
@@ -41,7 +41,7 @@ describe ("Employee Class", () => {
 
             const empRole = employee.getRole();
 
-            expect(empRole.toEqual(role));
+            expect(empRole).toEqual(role);
         });
     });
 });

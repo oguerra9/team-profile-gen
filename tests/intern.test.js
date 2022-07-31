@@ -1,4 +1,4 @@
-const Intern = require("lib\intern.js");
+const Intern = require("../lib/intern.js");
 
 describe("Intern Class", () => {
     describe("getSchool method", () => {

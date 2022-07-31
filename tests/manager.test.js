@@ -1,4 +1,4 @@
-const Manager = require("lib\manager.js");
+const Manager = require("../lib/manager.js");
 
 describe("Manager class", () => {
     describe("getOffice method", () => {

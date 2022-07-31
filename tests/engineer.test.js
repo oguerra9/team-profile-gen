@@ -1,4 +1,4 @@
-const Engineer = require("lib\engineer.js");
+const Engineer = require("../lib/engineer.js");
 
 describe("Engineer class", () => {
     describe("getGithub method", () => {
