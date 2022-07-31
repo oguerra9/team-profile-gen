@@ -1,12 +1,30 @@
-const Intern = require("./objects/intern");
-const Engineer = require("./objects/engineer");
-const Team = require("./objects/team");
-const Manager = require("./objects/manager");
+const Intern = require("./lib/intern");
+const Engineer = require("./lib/engineer");
+//const Team = require("./objects/team");
+const Manager = require("./lib/manager");
+const Employee = require("./lib/employee");
 
 const fs = require('fs');
 const inquirer = require('inquirer');
 
-const team = new Team();
+//const team = new Team();
+
+let teamHTML = `
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>My Team</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    </head>
+    
+    <body>
+        <h1 style="color:white; background-color: rgb(255, 67, 67);" class=" p-5 text-center fw-bold">My Team</h1>
+        <div class="d-flex justify-content-center">
+            <div class="team-members col-7 row row-cols-3 d-flex justify-content-center">
+                `;
 
 const validateEmail = async (email) => {
     if (email.includes('@') && email.includes('.')) {
@@ -45,7 +63,8 @@ const managerInfo = () => {
     ])
     .then((data) => {
         const manager = new Manager(data.managerName, data.employeeID, data.email, data.officeNumber)
-        team.addMember(manager)
+        //team.addMember(manager)
+        teamHTML += manager.getHTML()
         menu()
     })
 
@@ -103,7 +122,8 @@ const addEngineer = () => {
     ])
     .then ((data) => {
         const engineer = new Engineer(data.engName, data.engID, data.engEmail, data.engGitUser)
-        team.addMember(engineer)
+        //team.addMember(engineer)
+        teamHTML += engineer.getHTML()
         menu()
     })
 };
@@ -135,7 +155,8 @@ const addIntern = () => {
     ])
     .then ((data) => {
         const intern = new Intern(data.internName, data.internID, data.internEmail, data.internSchool)
-        team.addMember(intern)
+        //team.addMember(intern)
+        teamHTML += intern.getHTML()
         menu()
     })
 };
@@ -143,10 +164,15 @@ const addIntern = () => {
 const finishTeam = () => {
     //create team
     //generate HTML
+    teamHTML += `
+            </div>
+        </div>
+        </body>
+        </html>`;
     console.log('finishing team...');
-    console.log(JSON.stringify(team));
+    //console.log(JSON.stringify(team));
 
-    let teamHTML = team.getHTML();
+    //let teamHTML = team.getHTML();
 
     fs.writeFile('index.html', teamHTML, (err) =>
     err ? console.log(err) : console.log('Team Profile page created successfully'))
