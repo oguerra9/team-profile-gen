@@ -8,6 +8,7 @@ const inquirer = require('inquirer');
 
 let team = new Team();
 
+// checks that the user's input contains characteristics of a valid email address
 const validateEmail = async (email) => {
     if (email.includes('@') && email.includes('.')) {
         return true;
@@ -17,7 +18,7 @@ const validateEmail = async (email) => {
     }
 };
 
-//team manager’s name, employee ID, email address, and office number
+//ask user for the team manager’s name, employee ID, email address, and office number
 const managerInfo = () => {
     inquirer
     .prompt ([
@@ -35,7 +36,7 @@ const managerInfo = () => {
         type: 'input',
         message: 'Email Address: ',
         name: 'email',
-        validate: validateEmail,
+        validate: validateEmail, // uses the validateEmail function to check that the user's input is a valid email
     },
     {
         type: 'input',
@@ -44,8 +45,11 @@ const managerInfo = () => {
     }
     ])
     .then((data) => {
+        // once the user has finished entering the team manager's information, the user's answers are used to create a new manager object
         const manager = new Manager(data.managerName, data.employeeID, data.email, data.officeNumber)
+        // the manager object is then added to the team object using the class's '.addMember(employee)' method
         team.addMember(manager)
+        // the menu function is then called to allow the user to choose what they would like to do next
         menu()
     })
 
@@ -145,6 +149,6 @@ const finishTeam = () => {
 
     let teamHTML = team.getHTML();
 
-    fs.writeFile('index.html', teamHTML, (err) =>
+    fs.writeFile('demo.html', teamHTML, (err) =>
     err ? console.log(err) : console.log('Team Profile page created successfully'))
 };
