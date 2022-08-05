@@ -149,6 +149,6 @@ const finishTeam = () => {
 
     let teamHTML = team.getHTML();
 
-    fs.writeFile('demo.html', teamHTML, (err) =>
+    fs.writeFile('index.html', teamHTML, (err) =>
     err ? console.log(err) : console.log('Team Profile page created successfully'))
 };
