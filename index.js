@@ -55,11 +55,11 @@ const managerInfo = () => {
 
 };
 managerInfo();
-
+//the menu is displayed after each team member is added 
 const menu = () => {
     inquirer
     .prompt ([
-        {
+        { // add an engineer, add an intern, finish building my team
             type: 'list',
             message: 'What would you like to do with your team?',
             choices: ['add an engineer','add an intern','finish building my team'],
@@ -68,14 +68,14 @@ const menu = () => {
     ])
     .then ((response) => { 
         if (response.selection == 'add an engineer') {
-            addEngineer()
+            addEngineer() //calls function containing prompt for engineer's information to create new Engineer object
         }
         if (response.selection == 'add an intern') {
-            console.log('addIntern called')
+            console.log('addIntern called') //calls function containing prompt for intern's information to create new Intern object
             addIntern()
         }
         if (response.selection == 'finish building my team') {
-            finishTeam()
+            finishTeam() //calls function to finish building team
         }
     })
 };
@@ -105,15 +105,15 @@ const addEngineer = () => {
             name: 'engGitUser',
         }
     ])
-    .then ((data) => {
+    .then ((data) => { //creates a new Engineer object with gathered info, adds engineer to the team and displays the menu
         const engineer = new Engineer(data.engName, data.engID, data.engEmail, data.engGitUser)
-        team.addMember(engineer)
+        team.addMember(engineer) 
         menu()
     })
 };
 
 const addIntern = () => {
-    inquirer
+    inquirer //prompt to gather info for a new intern object
     .prompt ([
         {
             type: 'input',
@@ -137,7 +137,7 @@ const addIntern = () => {
             name: 'internSchool',
         }
     ])
-    .then ((data) => {
+    .then ((data) => { //creates new intern object from information gathered and adds intern object to team
         const intern = new Intern(data.internName, data.internID, data.internEmail, data.internSchool)
         team.addMember(intern);
         menu()
@@ -146,9 +146,9 @@ const addIntern = () => {
 
 const finishTeam = () => {
     console.log('finishing team...');
-
+    //gets html from the team's getHTML() method
     let teamHTML = team.getHTML();
-
+    //creates or writes over the file 'index.html' with the generated html 
     fs.writeFile('index.html', teamHTML, (err) =>
     err ? console.log(err) : console.log('Team Profile page created successfully'))
 };
